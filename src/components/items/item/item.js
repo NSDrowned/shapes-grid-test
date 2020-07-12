@@ -22,9 +22,11 @@ const Round = styled.div`
     border-radius: 50%;
 `
 const Triangle = styled.div`
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+    width: 0;
+    height: 0;
+	border-left: 100px solid transparent;
+	border-right: 100px solid transparent;
+	border-bottom: 200px solid ${(props) => `${props.color}`};
 `
 const Oval = styled.div`
     width: 200px;
@@ -44,7 +46,7 @@ function Items(props) {
             case 'round':
                 return <Round style={{backgroundColor: props.color}}></Round>;
             case 'triangle':
-                return <Triangle style={{backgroundColor: props.color}}></Triangle>;
+                return <Triangle color={props.color}></Triangle>;
             case 'oval':
                 return <Oval style={{backgroundColor: props.color}}></Oval>;
             case 'rectangle':
