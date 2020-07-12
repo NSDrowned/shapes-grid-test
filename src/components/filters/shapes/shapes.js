@@ -14,12 +14,12 @@ const ShapesStyle = styled.ul`
     }
 `;
 
-function Shapes() {
+function Shapes(props) {
 
-    const colors = ['Round', 'Square', 'Triangle', 'Oval', 'Rectangle'];
+    const colors = ['round', 'square', 'triangle', 'oval', 'rectangle'];
 
     const shapes = colors.map((value, index) => {
-        return <Shape key={index}>{value}</Shape>
+        return <Shape shape={value} key={index}>{value}</Shape>
     });
 
     return (

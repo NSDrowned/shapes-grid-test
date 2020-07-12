@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux'
 import styled from "styled-components";
+
+import { toggleShape } from "../../../../slices/filters";
 
 const ShapeStyle = styled.li`
     color: ${props => (props.selected ? "#333333" : "#808080")};
@@ -13,10 +16,12 @@ const ShapeStyle = styled.li`
 
 function Shape(props) {
 
+    const dispatch = useDispatch();
     const [status, changeStatus] = useState(true);
 
     const toggleSelected = () => {
         changeStatus(!status);
+        dispatch(toggleShape(props.shape));
     }
 
     return (

@@ -9,7 +9,7 @@ const filtersSlice = createSlice({
             'green': true,
             'blue': true,
             'yellow': true,
-            'gray': true
+            'grey': true
         },
         shapes: {
             'round': true,
@@ -21,9 +21,10 @@ const filtersSlice = createSlice({
     },
     reducers: {
         toggleColor(state, action) {
-            console.log(action.payload);
+            state.colors[action.payload] = !state.colors[action.payload];
         },
         toggleShape(state, action) {
+            state.shapes[action.payload] = !state.shapes[action.payload];
         }
     }
 })

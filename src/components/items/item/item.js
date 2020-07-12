@@ -9,16 +9,54 @@ const ItemStyle = styled.li`
     place-items: center;
 
     div {
-        width: 200px;
-        height: 200px;
         box-shadow: inset 0px 0px 1px 0px #000;
     }
 `;
-
+const Square = styled.div`
+    width: 200px;
+    height: 200px;
+`
+const Round = styled.div`
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+`
+const Triangle = styled.div`
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+`
+const Oval = styled.div`
+    width: 200px;
+    height: 100px;
+    border-radius: 50%;
+`
+const Rectangle = styled.div`
+    width: 200px;
+    height: 100px;
+`
 function Items(props) {
+
+    const shapeSwitch = (param) => {
+        switch(param) {
+            case 'square':
+                return <Square style={{backgroundColor: props.color}}></Square>;
+            case 'round':
+                return <Round style={{backgroundColor: props.color}}></Round>;
+            case 'triangle':
+                return <Triangle style={{backgroundColor: props.color}}></Triangle>;
+            case 'oval':
+                return <Oval style={{backgroundColor: props.color}}></Oval>;
+            case 'rectangle':
+                return <Rectangle style={{backgroundColor: props.color}}></Rectangle>;
+            default:
+                return '';
+        }
+    }
+
     return (
         <ItemStyle>
-            <div style={{backgroundColor: props.color}}></div>
+            {shapeSwitch(props.shape)}
         </ItemStyle>
     )
 }

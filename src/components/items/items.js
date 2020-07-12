@@ -24,17 +24,29 @@ function Items() {
 
     const dispatch = useDispatch();
     const storeItems = useSelector(state => state.items);
+    const storeFilters = useSelector(state => state.filters);
+
     let items = [];
 
     useEffect(() => {
         dispatch(getItems());
     }, [dispatch])
 
-    const filterItems = (items, colorFilter, shapeFilter) => {
+    const filterItems = (items, filters) => {
+
+        // filter out false keys
+
+        let colors = Object.keys(filters.colors);
+        let colorFilter = colors.filter(key => { return filters.colors[key] });
+
+        let shapes = Object.keys(filters.shapes);
+        let shapeFilter = shapes.filter(key => { return filters.shapes[key] });
+
+        // create items
 
         let filteredItems = items;
 
-        // filter items
+        // filter items based on arrays of shapes and colors that should be visible
 
         if((colorFilter && colorFilter.length > 0) || (shapeFilter && shapeFilter.length > 0)) {
             filteredItems = items.filter(item => colorFilter.indexOf(item.color) !== -1).filter(item => shapeFilter.indexOf(item.shape) !== -1);
@@ -48,11 +60,7 @@ function Items() {
     }
 
     if(storeItems.length > 0) {
-
-        let colorFilter = [];
-        let shapeFilter = [];
-
-        items = filterItems(storeItems, colorFilter, shapeFilter);
+        items = filterItems(storeItems, storeFilters);
     }
 
     return (

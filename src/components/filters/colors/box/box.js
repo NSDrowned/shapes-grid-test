@@ -20,7 +20,7 @@ function Box(props) {
 
     const toggleSelected = () => {
         changeStatus(!status);
-        dispatch(toggleColor('purple'));
+        dispatch(toggleColor(props.color));
     }
 
     return (
