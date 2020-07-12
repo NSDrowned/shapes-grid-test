@@ -30,10 +30,29 @@ function Items() {
         dispatch(getItems());
     }, [dispatch])
 
+    const filterItems = (items, colorFilter, shapeFilter) => {
+
+        let filteredItems = items;
+
+        // filter items
+
+        if((colorFilter && colorFilter.length > 0) || (shapeFilter && shapeFilter.length > 0)) {
+            filteredItems = items.filter(item => colorFilter.indexOf(item.color) !== -1).filter(item => shapeFilter.indexOf(item.shape) !== -1);
+        }
+
+        // return all item || filtered items
+
+        return filteredItems.map((item) => {
+            return <Item key={item.id} color={item.color} shape={item.shape} />
+        });
+    }
+
     if(storeItems.length > 0) {
-        items = storeItems.map((item) => {
-            return <Item key={item.id} color={item.color}></Item>
-        })
+
+        let colorFilter = [];
+        let shapeFilter = [];
+
+        items = filterItems(storeItems, colorFilter, shapeFilter);
     }
 
     return (

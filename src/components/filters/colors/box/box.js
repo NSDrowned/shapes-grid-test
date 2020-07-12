@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux'
 import styled from "styled-components";
+
+import { toggleColor } from "../../../../slices/filters";
 
 const BoxStyle = styled.li`
     margin-right: 22px;
@@ -12,10 +15,12 @@ const BoxStyle = styled.li`
 
 function Box(props) {
 
+    const dispatch = useDispatch();
     const [status, changeStatus] = useState(true);
 
     const toggleSelected = () => {
         changeStatus(!status);
+        dispatch(toggleColor('purple'));
     }
 
     return (

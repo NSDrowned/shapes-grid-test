@@ -14,4 +14,3 @@ const getItemsSlice = createSlice({
 export const { getItems } = getItemsSlice.actions
 
 export default getItemsSlice.reducer
-
