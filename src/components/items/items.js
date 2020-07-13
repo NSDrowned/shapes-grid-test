@@ -7,16 +7,25 @@ import { getItems } from "../../slices/getItems";
 import Item from './item/item';
 
 const ItemsStyle = styled.ul`
-    max-width: ${(props) => `${props.theme.globals.maxWidth}`};
-    margin-left: auto;
-    margin-right: auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 12px;
     padding: 0;
 
-    li:nth-child(4n+4) {
+    li:nth-child(2n+2) {
         margin-right: 0;
+    }
+
+    @media (min-width: 768px) {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: ${(props) => `${props.theme.globals.maxWidth}`};
+        grid-gap: 24px;
+        grid-template-columns: repeat(4, 1fr);
+
+        li:nth-child(4n+4) {
+            margin-right: 0;
+        }
     }
 `;
 
@@ -37,10 +46,10 @@ function Items() {
         // filter out false keys
 
         let colors = Object.keys(filters.colors);
-        let colorFilter = colors.filter(key => { return filters.colors[key] });
+        let colorFilters = colors.filter(key => { return filters.colors[key] });
 
         let shapes = Object.keys(filters.shapes);
-        let shapeFilter = shapes.filter(key => { return filters.shapes[key] });
+        let shapeFilters = shapes.filter(key => { return filters.shapes[key] });
 
         // create items
 
@@ -48,8 +57,8 @@ function Items() {
 
         // filter items based on arrays of shapes and colors that should be visible
 
-        if((colorFilter && colorFilter.length > 0) || (shapeFilter && shapeFilter.length > 0)) {
-            filteredItems = items.filter(item => colorFilter.indexOf(item.color) !== -1).filter(item => shapeFilter.indexOf(item.shape) !== -1);
+        if((colorFilters && colorFilters.length > 0) || (shapeFilters && shapeFilters.length > 0)) {
+            filteredItems = items.filter(item => colorFilters.indexOf(item.color) !== -1).filter(item => shapeFilters.indexOf(item.shape) !== -1);
         }
 
         // return all item || filtered items

@@ -4,16 +4,19 @@ import styled from "styled-components";
 
 import { toggleColor } from "../../../../slices/filters";
 
-const BoxStyle = styled.li`
-    margin-right: 22px;
+const ColorStyle = styled.li`
     border: ${props => (props.selected ? "2px solid #323433" : "2px solid #FFF")};
     height: 28px;
     width: 28px;
     box-sizing: content-box;
     cursor: pointer;
+
+    @media (min-width: 768px) {
+        margin-left: 24px;
+    }
 `;
 
-function Box(props) {
+function Color(props) {
 
     const dispatch = useDispatch();
     const [status, changeStatus] = useState(true);
@@ -24,7 +27,7 @@ function Box(props) {
     }
 
     return (
-        <BoxStyle
+        <ColorStyle
             onClick={toggleSelected}
             selected={status}
             style={{backgroundColor: props.color}}
@@ -32,4 +35,4 @@ function Box(props) {
     )
 }
 
-export default Box;
+export default Color;

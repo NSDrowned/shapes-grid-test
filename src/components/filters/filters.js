@@ -5,20 +5,16 @@ import Shapes from './shapes/shapes';
 import Colors from './colors/colors';
 
 const FiltersStyle = styled.div`
-    max-width: ${(props) => `${props.theme.globals.maxWidth}`};
-    color: ${(props) => `${props.theme.filters.textcolor}`};
-    height: 120px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    font-size: 18px;
-    font-weight: bold;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
 
-    @media (min-width: 768px) {
+    @media (min-width: 965px) {
+        max-width: ${(props) => `${props.theme.globals.maxWidth}`};
+        margin-left: auto;
+        margin-right: auto;
         height: 120px;
-        flex-direction: row;
-        justify-content: space-between;
+        grid-template-columns: repeat(2, 1fr);
     }
 `;
 
