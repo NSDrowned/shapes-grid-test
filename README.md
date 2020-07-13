@@ -1,7 +1,7 @@
 # Shapes Grid
 
 Responsive React application that lists items from the provided shapes.json file. The items listed can be filtered by shape and color.
-The selected filters should be reflected in the grid title. State managed with Redux Toolkit.
+The selected filters should be reflected in the grid title. State managed with Redux Toolkit and styles using Styled Components.
 
 ## Installation
 
