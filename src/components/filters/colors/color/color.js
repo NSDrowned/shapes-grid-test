@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch } from 'react-redux'
+import React from "react";
+import { useDispatch, useSelector } from 'react-redux'
 import styled from "styled-components";
 
 import { toggleColor } from "../../../../slices/filters";
@@ -19,10 +19,9 @@ const ColorStyle = styled.li`
 function Color(props) {
 
     const dispatch = useDispatch();
-    const [status, changeStatus] = useState(true);
+    const status = useSelector(state => state.filters.colors[props.color]);
 
     const toggleSelected = () => {
-        changeStatus(!status);
         dispatch(toggleColor(props.color));
     }
 

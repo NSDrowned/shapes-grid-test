@@ -5,8 +5,5 @@ export const Theme = {
     header: {
         textColor: "#FFF",
         backgroundColor: "#333333"
-    },
-    filters: {
-        textColor: "#7f7f7f"
     }
 }
